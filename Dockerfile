@@ -10,8 +10,6 @@ RUN chown -R test /home/test
 
 RUN pip install -r requirements.txt
 
-USER test
-
 RUN export FLASK_APP=app.py
 
 ENTRYPOINT [ "python", "app.py" ]
