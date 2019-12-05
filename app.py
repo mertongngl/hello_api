@@ -1,7 +1,6 @@
 from flask import Flask, request, json, Response
 from flask_restful import Resource, Api, fields
 import datetime
-from marshmallow.compat import unicode
 
 app = Flask(__name__)
 api = Api(app)
@@ -11,9 +10,6 @@ class CustomJsonEncoder(json.JSONEncoder):
 
         if isinstance(obj, (datetime.datetime, datetime.date)):
             return obj.isoformat()
-
-        elif isinstance(obj, ObjectId):
-            return unicode(obj)
 
         return json.JSONEncoder.default(self, obj)
 
